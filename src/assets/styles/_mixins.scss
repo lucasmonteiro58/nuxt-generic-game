@@ -1,0 +1,117 @@
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-around() {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@mixin select-none() {
+  -webkit-user-select: none;
+  /* Safari 3.1+ */
+  -moz-user-select: none;
+  /* Firefox 2+ */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard syntax */
+}
+
+@mixin fill-canvas() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $canvas-width;
+  height: $canvas-height;
+}
+
+@mixin fill-and-center() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $canvas-width;
+  height: $canvas-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin viga() {
+  font-family: 'Viga-Regular', 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+}
+
+@mixin poetsen-one() {
+  font-family: 'PoetsenOne-Regular', 'Open Sans', Sans, sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin exo() {
+  font-family: exo, 'Open Sans', Sans, sans-serif;
+}
+
+@mixin norwester() {
+  font-family: norwester, 'Open Sans', Sans, sans-serif;
+}
+
+@mixin bungee() {
+  font-family: bungee, 'Open Sans', Sans, sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin embed_image($url, $width, $height) {
+  width: $width;
+  height: $height;
+
+  &::before {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center center;
+    background-image: url($url);
+    background-size: $width $height;
+    display: inline-block;
+    width: $width;
+    height: $height;
+    content: '';
+  }
+}
+
+@mixin book_glow() {
+  filter: drop-shadow(0 0 1rem $glow-button);
+}
+
+@mixin button_glow() {
+  @include glow($glow, 1px);
+
+  transition: filter 0.2s;
+}
+
+@mixin glow($color, $weight: 0, $blur: 7px) {
+  @if $weight==0 {
+    filter: drop-shadow(0px 0px $blur $color);
+  } @else {
+    filter: drop-shadow($weight $weight $blur $color)
+      drop-shadow($weight * -1 $weight $blur $color)
+      drop-shadow($weight $weight * -1 $blur $color)
+      drop-shadow($weight * -1 $weight * -1 $blur $color);
+  }
+}
+
+@mixin name_dialog() {
+  color: white;
+  font-size: 33px;
+  text-align: center;
+  filter: drop-shadow(2rem 1rem 0.1 black);
+  text-transform: uppercase;
+}
+
+@mixin text_border($size_x: 2px, $size_y: 1px, $size_z: 5px, $color: #000) {
+  text-shadow: $size_x 0 0 $color, -#{$size_x} 0 0 $color, 0 $size_x 0 $color,
+    0 -#{$size_x} 0 $color, $size_y $size_y 0 $color,
+    -#{$size_y} -#{$size_y} 0 $color, $size_y -$size_y 0 $color,
+    -#{$size_y} $size_y 0 $color, $size_y $size_y $size_z $color;
+}

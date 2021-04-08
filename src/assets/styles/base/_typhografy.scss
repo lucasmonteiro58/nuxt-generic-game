@@ -1,0 +1,23 @@
+body {
+  @include exo();
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $text-color;
+}
+
+input {
+  text-transform: uppercase;
+
+  &::placeholder {
+    text-transform: uppercase;
+  }
+}
+
+.title {
+  @include exo();
+}
+
+strong {
+  color: $bold-color !important;
+  font-weight: 500;
+}
